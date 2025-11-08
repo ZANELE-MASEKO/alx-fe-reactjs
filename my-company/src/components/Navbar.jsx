@@ -6,7 +6,7 @@ function Navbar() {
                     display: 'flex',
                     gap: '20px',
                     padding: '15px',
-                    justifyContenet: 'center',
+                    justifyContent: 'center',
                     backgroundColor: '#222',
                     color: 'white',
                     fontFamily: 'Arial'
