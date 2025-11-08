@@ -1,7 +1,7 @@
 import UserInfo from './UserInfo';
 
-function ProfilePage({userData}) {
-    return <userInfo userData={userData} />;
+function ProfilePage() {
+    return <userInfo />;
 }
 
 export default ProfilePage;
