@@ -6,6 +6,7 @@ import AddRecipeForm from './components/AddRecipeForm.jsx'
 import RecipeList from './components/RecipeList.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeList from "./RecipeList";
+import SearchBar from './components/SearchBar.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,6 +36,7 @@ function App() {
 
       <AddRecipeForm />
       <RecipeList />
+      <SearchBar />
 
       <BrowserRouter>
       <Routes>
