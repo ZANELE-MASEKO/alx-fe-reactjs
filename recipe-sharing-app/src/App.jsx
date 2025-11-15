@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import AddRecipeForm from './components/AddRecipeForm.jsx'
 import RecipeList from './components/RecipeList.jsx'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RecipeList from "./RecipeList";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,6 +35,15 @@ function App() {
 
       <AddRecipeForm />
       <RecipeList />
+
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+
+        {/* Dynamic route for recipe details */}
+        <Route path="/recipes/:id" element={<RecipePage />} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
