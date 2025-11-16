@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeList from "./RecipeList";
 import SearchBar from './components/SearchBar.jsx'
 import RecipeDetails from './components/RecipeDetails.jsx'
+import FavoritesList from './components/FavoritesList.jsx'
+import RecommendationsList from './components/RecommendationsList.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,6 +41,8 @@ function App() {
       <RecipeList />
       <SearchBar />
       <RecipeDetails />
+      <FavoritesList />
+      <RecommendationsList />
 
       <BrowserRouter>
       <Routes>
