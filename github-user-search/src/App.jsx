@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import {Browserrouter as Router, Routes, Route, Link} from 'react-router-dom'
-import Home from './pages/Home.jsx'
+import Home from './components/Home.jsx'
 
 function App() {
 
