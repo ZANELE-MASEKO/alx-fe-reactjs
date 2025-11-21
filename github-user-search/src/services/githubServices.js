@@ -1,15 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API= import.meta.env.VITE_APP_GITHUB_API_KEY
-
-export const githubApi = axios.create({
-    baseURL: 'https://api.github.com',
-    headers: {
-        Authorization: `token ${API}`
-    }
-})
-
-export const searchUser = async (username) => {
-  const response = await api.get(`/users/${username}`);
+export const fetchUserData = async (username) => {
+  const response = await axios.get(`https://api.github.com/users/${username}`);
   return response.data;
 };
