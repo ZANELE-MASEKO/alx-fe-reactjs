@@ -3,15 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import React from 'react'
+import HomePage from "./components/HomePage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1 class='text-blue-500'> Tailwindcss</h1>
-    </>
-  )
+    <div className="bg-gray-100 min-h-screen">
+      <HomePage />
+    </div>
+  );
 }
 
-export default App
+export default App;
