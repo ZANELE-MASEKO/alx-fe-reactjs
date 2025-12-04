@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-// Simulated data import (replace with API call in production)
 import recipeData from '../data.json'; 
 
 const RecipeDetail = () => {
@@ -9,14 +8,12 @@ const RecipeDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate fetching recipe data based on ID
     const foundRecipe = recipeData.find(r => r.id === id); 
     
-    // Simulate network delay
     setTimeout(() => { 
         setRecipe(foundRecipe);
         setLoading(false);
-    }, 300); // Small delay for effect
+    }, 300);
   }, [id]);
 
   if (loading) {
@@ -47,7 +44,7 @@ const RecipeDetail = () => {
           ← Back to all Recipes
         </Link>
 
-        {/* --- Recipe Header Section --- */}
+    
         <header className="mb-8">
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight mb-2">
             {recipe.title}
@@ -57,9 +54,9 @@ const RecipeDetail = () => {
           </p>
         </header>
 
-        {/* --- Image and Details Grid --- */}
+        
         <div className="lg:grid lg:grid-cols-3 lg:gap-8 mb-12">
-          {/* Recipe Image (Col Span 2) */}
+          
           <div className="lg:col-span-2 shadow-xl rounded-lg overflow-hidden">
             <img 
               src={recipe.image} 
@@ -68,7 +65,7 @@ const RecipeDetail = () => {
             />
           </div>
           
-          {/* Details Card (Col Span 1) */}
+          
           <div className="lg:col-span-1 mt-6 lg:mt-0 bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">
               Recipe Snapshot ⏱️
@@ -87,10 +84,10 @@ const RecipeDetail = () => {
           </div>
         </div>
 
-        {/* --- Ingredients & Instructions Sections --- */}
+       
         <div className="grid md:grid-cols-2 gap-8">
 
-          {/* 1. Ingredients Card */}
+          
           <div className="bg-white p-8 rounded-lg shadow-xl">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
               <span className="text-indigo-600 mr-3">🍚</span> Ingredients
@@ -98,7 +95,7 @@ const RecipeDetail = () => {
             <ul className="space-y-3 list-none p-0">
               {recipe.ingredients.map((ingredient, index) => (
                 <li key={index} className="flex items-start text-lg text-gray-700">
-                  {/* Custom Check Icon for styling */}
+                  
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   {ingredient}
                 </li>
@@ -106,7 +103,7 @@ const RecipeDetail = () => {
             </ul>
           </div>
 
-          {/* 2. Instructions Card */}
+          
           <div className="bg-white p-8 rounded-lg shadow-xl">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
               <span className="text-indigo-600 mr-3">👨‍🍳</span> Instructions
