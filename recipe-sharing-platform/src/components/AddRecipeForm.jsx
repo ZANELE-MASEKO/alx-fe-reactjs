@@ -1,5 +1,27 @@
 import React, { useState } from "react";
 
+export function validate({ title, ingredients, steps }) {
+  const errors = {};
+
+  if (!title.trim()) errors.title = "Recipe title is required.";
+
+  if (!ingredients.trim()) {
+    errors.ingredients = "Ingredients are required.";
+  } else {
+    const items = ingredients
+      .split("\n")
+      .map((i) => i.trim())
+      .filter((i) => i);
+    if (items.length < 2) {
+      errors.ingredients = "Add at least 2 ingredients.";
+    }
+  }
+
+  if (!steps.trim()) errors.steps = "Preparation steps are required.";
+
+  return errors;
+}
+
 export default function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
@@ -9,26 +31,14 @@ export default function AddRecipeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let validationErrors = {};
-
    
-    if (!title.trim()) validationErrors.title = "Recipe title is required.";
-    if (!ingredients.trim()) {
-      validationErrors.ingredients = "Ingredients are required.";
-    } else {
-      const ingredientList = ingredients.split("\n").filter((item) => item.trim() !== "");
-      if (ingredientList.length < 2) {
-        validationErrors.ingredients = "Add at least 2 ingredients.";
-      }
-    }
-    if (!steps.trim()) validationErrors.steps = "Preparation steps are required.";
+    const validationErrors = validate({ title, ingredients, steps });
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
 
-   
     const newRecipe = {
       title,
       ingredients: ingredients.split("\n"),
@@ -36,10 +46,8 @@ export default function AddRecipeForm() {
     };
 
     console.log("Recipe Submitted:", newRecipe);
-
     alert("Recipe submitted successfully!");
 
-    
     setTitle("");
     setIngredients("");
     setSteps("");
@@ -52,6 +60,7 @@ export default function AddRecipeForm() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
+        {/* TITLE FIELD */}
         <div>
           <label className="block text-gray-700 font-semibold mb-1">
             Recipe Title
@@ -66,7 +75,7 @@ export default function AddRecipeForm() {
           {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
         </div>
 
-      
+        
         <div>
           <label className="block text-gray-700 font-semibold mb-1">
             Ingredients (one per line)
@@ -98,7 +107,6 @@ export default function AddRecipeForm() {
           )}
         </div>
 
-      
         <button
           type="submit"
           className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition"
