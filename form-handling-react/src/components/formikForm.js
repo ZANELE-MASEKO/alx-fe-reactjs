@@ -4,8 +4,8 @@ import * as Yup from "yup";
 
 const values= Yup.object({
     username:Yup.string().requird('username required'),
-    email:Yup.string().email('inavalid email formt').required('email required'),
-    password: Yup.string().min(6, 'six characters of more').required('password required')
+    email:Yup.string().required('email required').email('inavalid email formt'),
+    password: Yup.string().required('password required').min(6, 'six characters of more')
 })
 
 
