@@ -14,15 +14,15 @@ export default function RegistrationForm() {
 
         const newErrors= {}
 
-        if (!username.trim()) {
+        if (!username) {
             newErrors.username = "invalid username";
         }
 
-        if (!email.trim()) {
+        if (!email) {
             newErrors.email = "invalid email";
         }
 
-        if (password.length < 6) {
+        if (!password) {
             newErrors.password = "password must be at least 6 characters";
         }
     }
