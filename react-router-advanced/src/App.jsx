@@ -1,24 +1,36 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import BlogPost from "./components/BlogPost";
 import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./components/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <Router>
       <Routes>
 
-        <Route path="/profile/:userId" element={<Profile />}>
-          
-          <Route path="details" element={<ProfileDetails />} />
-          <Route path="settings" element={<ProfileSettings />} />
+        {/* Dynamic Blog Route */}
+        <Route path="/blog/:id" element={<BlogPost />} />
 
-        </Route>
+        {/* Login Route */}
+        <Route
+          path="/login"
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
+
+        {/* Protected Profile Route */}
+        <Route
+          path="/profile/:userId"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </Router>
