@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
+import ProfileDetails from "./ProfileDetails";
+import ProfileSettings from "./ProfileSettings";
 
 const Profile = () => {
   const { userId } = useParams();
@@ -16,7 +18,10 @@ const Profile = () => {
 
       <hr />
 
-      <Outlet />
+       <Routes>
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+      </Routes>
     </div>
   );
 };
